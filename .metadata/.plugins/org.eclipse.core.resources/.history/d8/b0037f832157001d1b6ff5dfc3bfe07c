@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+public class GeradorByteCode {
+	public List<String> byteCode;
+	public List<String> fonte;
+	public Boolean jaExisteScanner;
+	public GeradorByteCode(List<String> fonte) {
+		this.fonte = fonte;
+	}
+	public Boolean gerar() {
+		jaExisteScanner = false;
+		byteCode = new ArrayList<>();
+		for(String linha: fonte ) {
+			System.out.println(linha);
+			gerarInicio(linha);
+			gerarFim(linha);
+			gerarInteiro(linha);
+			gerarLeia(linha);
+			
+		}
+		for(String linha: byteCode) {
+			System.out.println(linha);
+		}
+		return true;
+	}
+	public void gerarInicio(String linha) {
+		
+		if (!linha.equals("inicio"))
+			return;
+			
+byteCode.add("public class Nome {");
+byteCode.add("public static void main(String[] args){");
+
+	}
+	public void gerarFim(String linha) {
+		if (!linha.equals("fim"))
+			return;
+		byteCode.add("}");
+		byteCode.add("}");
+	}
+	public void gerarInteiro(String linha) {
+		if (!linha.startsWith("inteiro"))
+			return;
+	byteCode.add(linha.replace("inteiro","int")+";");
+	}
+	
+
+	public void gerarLeia(String linha) {
+		if(!linha.startsWith("leia"))
+			return;
+	if(!jaExisteScanner) {
+	byteCode.add("Scanner teclado = new Scanner();");
+	jaExisteScanner=true;
+	}
+	byteCode.add(linha.replace("leia","")+
+			"= teclado.nextInt();");	}
+	
+	
+
+}

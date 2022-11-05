@@ -1,0 +1,12 @@
+
+public class AnalisadorLexico {
+
+	public AnalisadorLexico() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Boolean validar(programa, alfabeto) {
+		
+	}
+
+}

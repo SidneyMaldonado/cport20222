@@ -1,0 +1,21 @@
+inicio
+  inteiro a
+  inteiro b
+  inteiro c
+  leia a
+  leia b
+  c = a + b
+  c = a + 3
+  se a > b entao
+     escreva a
+  senao
+     escreva b
+  fimse
+  escreva "Soma de a e b"
+  escreva 'Soma de a e b'
+  escreva c
+  conte 1 ate 10 em c
+    escreva c
+  fimconte
+  email sm@mail.com texto c
+fim

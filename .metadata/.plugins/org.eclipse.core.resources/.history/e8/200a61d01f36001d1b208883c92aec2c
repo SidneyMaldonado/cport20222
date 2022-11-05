@@ -1,0 +1,42 @@
+import java.util.List;
+
+public class AnalisadorLexico {
+
+	public AnalisadorLexico() {
+		
+	}
+	
+	public boolean validar(List<String> programa, 
+			List<String> alfabeto) {
+
+		char letra;
+		boolean achou;
+		// percorre o vetor de linha
+		for(String linha: programa) {
+			// percorre cada caracter da linha
+			for (int i = 0; i < linha.length(); i++) {
+				letra = linha.charAt(i);
+				achou = estaNoAlfabeto(letra, alfabeto);
+				if (!achou) {
+					System.out.println("Letra " + letra + " nao encontrada");
+					return false;
+				}
+			}
+		}
+		System.out.println("Analise lexica OK.");
+		return true;
+	}
+	
+	public boolean estaNoAlfabeto( char letra, List<String> alfabeto) {
+		boolean resultado = false;
+		String linha = alfabeto.get(0);
+		
+		for(int i=0;i<linha.length();i++) {
+			if (letra == linha.charAt(i)) {
+				return true;
+			}
+		}
+		return resultado;
+	}
+
+}

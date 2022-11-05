@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.List;
+public class GeradorByteCode {
+	public List<String> byteCode;
+	public List<String> fonte;
+	public GeradorByteCode(List<String> fonte) {
+		this.fonte = fonte;
+	}
+	public Boolean gerar() {
+		byteCode = new ArrayList<>();
+		for(String linha: fonte ) {
+			System.out.println(linha);
+			gerarInicio(linha);
+			gerarFim(linha);
+			gerarInteiro(linha);
+//			gerarLeia(linha);
+			
+			
+		}
+		for(String linha: byteCode) {
+			System.out.println(linha);
+		}
+		return true;
+	}
+	public void gerarInicio(String linha) {
+		
+		if (!linha.equals("inicio"))
+			return;
+			
+byteCode.add("public class Nome {");
+byteCode.add("public static void main(String[] args){");
+
+	}
+	public void gerarFim(String linha) {
+		if (!linha.equals("fim"))
+			return;
+		byteCode.add("}");
+		byteCode.add("}");
+	}
+	public void gerarInteiro(String linha) {
+	byteCode.add(linha.replace("inteiro","int")+";");
+	}
+
+}

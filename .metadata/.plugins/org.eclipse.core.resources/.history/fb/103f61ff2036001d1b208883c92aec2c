@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Compilar {
+	
+	public List<String> programa;
+	public List<String> alfabeto;
+	public List<String> dicionario;
+	
+	public Compilar() {
+		programa  = new ArrayList();
+		alfabeto = new ArrayList();
+		dicionario = new ArrayList();	
+	}
+	
+	public void executar() {
+		LeitorArquivo leitor = new LeitorArquivo();
+		try {
+			programa = leitor.lerArquivo("C:\\CPort\\exemplo.txt");
+			alfabeto = leitor.lerArquivo("c:\\Cport\\alfabeto.txt");
+  		    dicionario = leitor.lerArquivo("c:\\Cport\\dicionario.txt");
+  		    leitor.Imprimir(alfabeto);
+  		    
+  		    AnalisadorLexico lexico = new AnalisadorLexico();
+  		    lexico.validar(programa, alfabeto);
+				
+		} catch (Exception e) {
+			System.out.println("Erro: " + e.getMessage());
+		}
+	}
+}

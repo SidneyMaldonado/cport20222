@@ -1,0 +1,59 @@
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.spi.DirectoryManager;
+
+public class Compilar {
+	
+	public List<String> programa;
+	public List<String> alfabeto;
+	public List<String> dicionario;
+	public List<String> gramatica;
+	
+	public Compilar() {
+		programa  = new ArrayList();
+		alfabeto = new ArrayList();
+		dicionario = new ArrayList();	
+		gramatica = new ArrayList();
+	}
+	
+	public void executar(String fonte) {
+		LeitorArquivo leitor = new LeitorArquivo();
+		try {
+			
+			String currentPath = new java.io.File(".").getCanonicalPath();
+			System.out.println("Current dir:" + currentPath);
+			
+			this.programa = leitor.lerArquivo(fonte);
+			alfabeto = leitor.lerArquivo("arquivos\\alfabeto.txt");
+  		    dicionario = leitor.lerArquivo("arquivos\\dicionario.txt");
+  		    gramatica = leitor.lerArquivo("arquivos\\gramatica.txt");
+  		   // leitor.Imprimir(alfabeto);
+  		    
+  		    AnalisadorLexico lexico = new AnalisadorLexico();
+  		    AnalisadorSintatico sintatico = new AnalisadorSintatico();
+  		    AnalisadorSemantico semantico = new AnalisadorSemantico();
+  		    if (lexico.validar(programa, alfabeto)) {
+  		    	System.out.println("\nAnalise Sintática...");
+  		    	if (sintatico.validar(programa, gramatica)) {
+  		    		System.out.println("Analise sintática OK");
+  		    		// começar a analise semântica
+  		    		if (semantico.validar(programa, dicionario)) {
+  		    			System.out.println("Analise semantica OK");
+GeradorByteCode gerador = 
+new GeradorByteCode(programa);
+ 						gerador.gerar();
+  		    		}
+  		    	} else {
+  		    		System.out.println("Erro na analise sintatica");
+  		    	}
+  		    } else {
+  		    	System.out.println("\nExistem erros na analise lexica...");
+  		    	return;
+  		    }
+				
+		} catch (Exception e) {
+			System.out.println("Erro: " + e.getMessage());
+		}
+	}
+}

@@ -1,0 +1,40 @@
+import java.util.List;
+
+public class AnalisadorLexico {
+
+	public AnalisadorLexico() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Boolean validar(List<String> programa, List<String> alfabeto) {
+		
+		for(String linha: programa) {
+			for(int i=0; i< linha.length(); i++) {
+				
+				System.out.println(linha.charAt(i));
+				
+				if (!estanoalfabeto(linha.charAt(i), alfabeto)) {
+					System.out.printf("%s %s nao está no alfabeto\n",linha.charAt(i),i);
+					return false;
+				}
+				
+			}
+		}
+		return true;
+	}
+	
+	public Boolean estanoalfabeto( char letra, List<String> alfabeto) {
+		String alfa = alfabeto.get(0);
+		if (letra == ' ') {
+			System.out.println("--");
+		}
+		
+		for(int i=0;i<alfa.length();i++) {
+			if (letraDoAlfabeto == letra) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+}

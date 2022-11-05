@@ -1,0 +1,19 @@
+import java.util.List;
+
+public class AnalisadorLexico {
+
+	public AnalisadorLexico() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Boolean validar(List<String> programa, List<String> alfabeto) {
+		
+		for(String linha: programa) {
+			
+			
+			
+		}
+		return true;
+	}
+
+}

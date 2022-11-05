@@ -1,0 +1,14 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Cport {
+
+	public static void main(String[] args) {
+		Compilar compilar= new Compilar();
+		if (args.length == 0) {
+			System.out.println("Digite o nome do arquivo:");
+			
+		}
+		compilar.executar(args[0]);
+	}
+}

@@ -1,0 +1,20 @@
+<letra> := a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|@|.
+<espaco> := _
+<numero> := 0|1|2|3|4|5|6|7|8|9
+<aspas> := "|'
+<letranumero> := <letra>|<numero>
+<varivavel> := <letra><letrasnumero>
+<oparitmetico> := +|-|*|/
+<oprelacional> := >|<|=|!
+<varnum> := <variavel>|<numero>
+<string> := <aspas><letranumero>|<espaco><aspas>
+<email> :=  <letranumero>@<letranumero>.<letra>
+inteiro <variavel>
+leia <variavel>
+<variavel> = <varnum> <oparitmetico> <varnum>
+se <variavel> <oprelacional> <varnum>
+escreva <varnum>|<string>
+conte <varnum> ate <varnum> em <variavel>
+fimconte
+fim
+email <email> texto <variavel>
